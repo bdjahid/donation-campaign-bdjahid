@@ -8,7 +8,7 @@ import Donate from "../Donate/Donate";
 const Donation = () => {
     const donates = useLoaderData();
     const [donations, setDonations] = useState([]);
-    const [isShow, setIsShow] = useState(false)
+    const [dataLength, setDataLength] = useState(4)
 
     useEffect(() => {
         const storedDonateIds = getStoredDonate();
@@ -20,20 +20,18 @@ const Donation = () => {
     return (
         <div className="container mx-auto mt-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {isShow ?
-                    donations.map(donate => <Donate
-                        key={donate.id}
-                        donate={donate}
-                    ></Donate>)
-                    :
-                    donations.slice(0, 4).map(donate => <Donate
+                {
+                    donations.slice(0, dataLength).map(donate => <Donate
                         key={donate.id}
                         donate={donate}
                     ></Donate>)
                 }
+
             </div>
-            <div className="text-center my-5">
-                {donations.length > 4 && <button onClick={() => setIsShow(!isShow)} className="btn btn-primary">Show All</button>}
+            <div className={dataLength === donations.length ? 'hidden' : ''}>
+                <div className="text-center my-5">
+                    <button onClick={() => setDataLength(donations.length)} className="btn btn-primary">Show All</button>
+                </div>
             </div>
         </div>
     );

@@ -5,24 +5,30 @@ import 'react-toastify/dist/ReactToastify.css';
 import { saveDonate } from "../../utility/localstorage";
 import './DonationDetails .css'
 
+
+
 const DonationDetails = () => {
     const donations = useLoaderData();
-    console.log(donations)
+    // console.log(donations)
     const { id } = useParams();
     const idInt = parseInt(id)
-    const donation = donations.find(donation => donation.id === idInt);
+    const donation = donations.find(donation => donation.id == idInt);
     // console.log(donation)
     const handleDonate = () => {
         saveDonate(idInt)
         toast('Donate successfully')
     }
+
+    const handleBtn = () => {
+        console.log(donations.length / 1)
+    }
     return (
         <div className="mt-10 container mx-auto">
+
             <div className="card card-compact w-full bg-base-100 shadow-xl">
                 <figure><img className="w-full p-5" src={donation.cover} alt="Shoes" /></figure>
-
-                <div className="absolute bottom-40 bgcolor width ms-5">
-                    <button onClick={handleDonate} className="btn bg-[#FF444A] ms-5 mt-6">Donate<LiaDollarSignSolid />{donation.price}</button>
+                <div onClick={handleBtn} className="md:absolute md:bottom-40 bgcolor  width ms-5 flex items-center">
+                    <button style={{ background: donation.text_color }} onClick={handleDonate} className="btn text-white ms-5">Donate<LiaDollarSignSolid />{donation.price}</button>
                 </div>
                 <div className="card-body">
                     <h2 className="card-title font-bold">{donation.title}</h2>

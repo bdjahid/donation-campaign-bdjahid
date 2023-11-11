@@ -10,7 +10,6 @@ const Donate = ({ donate }) => {
                 <h2 style={{ color: text_color }}
                     className="text-sm">{category}</h2>
                 <p className="text-xl font-bold">{title}</p>
-                <p>he</p>
                 <p style={{ color: text_color }} className='flex items-center'><BiDollar />{price}</p>
                 <div className="card-actions">
                     <Link to={`/details/:id`}>

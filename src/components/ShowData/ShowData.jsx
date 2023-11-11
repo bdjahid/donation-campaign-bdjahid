@@ -8,7 +8,9 @@ const ShowData = ({ cetagory }) => {
             <div style={{ background: background_color }} className="card card-compact bg-base-100 shadow-xl">
                 <figure><img src={cover} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <p style={{ color: text_color }} className="font-bold">{category}</p>
+                    <div>
+                        <button style={{ color: text_color, background: background_color }} className="font-bold btn">{category}</button>
+                    </div>
                     <h2 style={{ color: text_color }} className="card-title">{title}</h2>
                 </div>
             </div>
