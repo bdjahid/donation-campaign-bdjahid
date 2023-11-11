@@ -1,0 +1,8 @@
+.width {
+    width: 97%;
+    height: 10%;
+}
+
+.bgcolor {
+    background: linear-gradient(45deg, rgba(11, 11, 11, 0.50), rgba(0, 0, 0, 0.175));
+}

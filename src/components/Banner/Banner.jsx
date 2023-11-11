@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Product from "../Product/Product";
 
 
 
@@ -11,8 +12,9 @@ const Banner = () => {
             .then(data => setProducts(data))
     }, [])
 
-    const [searchItems, setSearchItems] = useState();
+    const [searchItems, setSearchItems] = useState(localStorage.getItem('searchTerm') || '');
     const [searchResults, setSearchResults] = useState([]);
+
     useEffect(() => {
         const filteredProducts = products.filter(product =>
             product.category.toLowerCase().includes(searchItems.toLowerCase())
@@ -30,7 +32,7 @@ const Banner = () => {
     }
 
     return (
-        <div className="text-center mt-20">
+        <div className="text-center mt-20 container mx-auto">
 
             <h1 className="text-4xl font-bold">I Grow By Helping People In Need</h1>
             <div className="mt-8">
@@ -40,10 +42,14 @@ const Banner = () => {
                         <input className="btn btn-primary" type="submit" value="Search" />
                     </label>
                 </form>
-
-                {searchResults.map(product => (
-                    <li key={product.id}>{product.category}</li>
-                ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10 ms-14 md:ms-0">
+                    {
+                        searchResults.map(product => <Product
+                            key={product.id}
+                            product={product}
+                        ></Product>)
+                    }
+                </div>
             </div>
         </div>
     );
