@@ -9,6 +9,6 @@ Currently, two official plugins are available:
 ## Bullet Point
 # Add 3 featured
 
--Search option
--E-commerce Functionality
--Responsive Design for Mobile Compatibility
+- Search option
+- E-commerce Functionality
+- Responsive Design for Mobile Compatibility
