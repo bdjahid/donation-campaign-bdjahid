@@ -1,16 +1,20 @@
-
-
+import { BiDollar } from 'react-icons/bi'
+import { Link } from 'react-router-dom';
 const Donate = ({ donate }) => {
-    const { cover, title, category, price } = donate;
+    const { cover, title, category, price, background_color, text_color } = donate;
+
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div style={{ background: background_color }} className="card card-side bg-base-100 shadow-xl">
             <figure><img src={cover} alt="Movie" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{category}</h2>
-                <p>{title}</p>
-                <p>{price}</p>
+                <h2 style={{ color: text_color }} className="text-sm">{category}</h2>
+                <p className="text-xl font-bold">{title}</p>
+                <p style={{ color: text_color }} className='flex items-center'><BiDollar />{price}</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary">Watch</button>
+                    <Link to={`/details/:id`}>
+                        <button style={{ background: text_color }} className='btn text-white'>View Details</button>
+
+                    </Link>
                 </div>
             </div>
         </div>
